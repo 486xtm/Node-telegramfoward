@@ -2,10 +2,10 @@
   "name": "telegram-forwarder",
   "version": "1.0.0",
   "description": "Express server to forward messages to Telegram group",
-  "main": "src/app.js",
+  "main": "src/index.js",
   "scripts": {
-    "start": "doppler run -- node src/app.js",
-    "dev": "doppler run -- nodemon src/app.js",
+    "start": "doppler run -- node src/index.js",
+    "dev": "doppler run -- nodemon src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
