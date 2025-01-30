@@ -4,7 +4,7 @@
   "description": "Express server to forward messages to Telegram group",
   "main": "src/index.js",
   "scripts": {
-    "start": "doppler run -- node src/index.js",
+    "start": "node src/index.js",
     "dev": "doppler run -- nodemon src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
