@@ -17,6 +17,9 @@ app.use(cors()); // Enable CORS with specific options
 app.use(express.json());
 
 // Routes
+app.get('/', (req, res) => {
+    res.status(200).json('Welcome, your app is working well');
+})
 app.use('/api/messages', messageRoutes);
 
 // Error handling middleware
