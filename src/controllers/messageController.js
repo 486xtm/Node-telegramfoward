@@ -5,16 +5,12 @@ const messageController = {
     try {
       const ip = req.headers["x-forwarded-for"] || req.socket.remoteAddress;
       let geo;
-      console.log("ip=======>", ip);
       await fetch(`http://ip-api.com/json/${ip}`)
         .then((response) => response.json())
         .then((data) => {
-            geo=`${data.city}, ${data.regionName}, ${data.country}`;
-        })
-        .catch((err) => {
-          console.log("err");
+          geo = `${data.city}, ${data.regionName}, ${data.country}`;
         });
-    //   const { ipAddress, location, content } = req.body;
+      //   const { ipAddress, location, content } = req.body;
       const ipAddress = ip;
       const location = geo;
       const { content } = req.body;
