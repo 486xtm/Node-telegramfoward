@@ -3,16 +3,16 @@ const bot = require('../config/telegram');
 const messageController = {
     sendMessage: async (req, res) => {
         try {
-            const {name, email, content } = req.body;
+            const {ipAddress, location, content } = req.body;
 
-            if (!name || !email || !content) {
+            if (!ipAddress || !location || !content) {
                 return res.status(400).json({
                     success: false,
-                    message: 'name, email and content are required'
+                    message: 'ipAddress, location and content are required'
                 });
             }
 
-            const messageText = `Name: ${name} \nEmail: *${email}*\nContent: ${content}`;
+            const messageText = `IpAddress: ${ipAddress} \nLocation: *${location}*\nContent: ${content}`;
 
             await bot.sendMessage(process.env.TELEGRAM_GROUP_ID, messageText, {
                 parse_mode: 'Markdown'
