@@ -3,7 +3,15 @@ const bot = require("../config/telegram");
 const messageController = {
   sendMessage: async (req, res) => {
     try {
-      const ip = req.headers["x-forwarded-for"] || req.socket.remoteAddress;
+      let ip = req.headers["x-forwarded-for"] || req.socket.remoteAddress;
+      if (ip === "::1") {
+        await fetch("https://api.ipify.org?format=json")
+          .then((response) => response.json())
+          .then((data) => {
+            ip = data.ip;
+          })
+          .catch((error) => console.error("Error fetching IP address:", error));
+      }
       let geo;
       await fetch(`http://ip-api.com/json/${ip}`)
         .then((response) => response.json())
